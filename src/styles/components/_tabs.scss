@@ -1,0 +1,8 @@
+
+.jl-invoices-tabs .nav-tabs.nav-justified>li>a { text-align:left;}
+
+.jl-invoices-tabs .tab-content { background-color:#FFF; padding:20px; border:1px solid #ddd; border-top:0px;}
+
+@media screen and (max-width:768px) {
+	.jl-invoices-tabs .tab-content { border-top:1px solid #ddd;}
+}

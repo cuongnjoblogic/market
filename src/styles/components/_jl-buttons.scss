@@ -1,0 +1,337 @@
+button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  line-height: 32px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+}
+
+// *** Styling the button
+[class*="jl-button"],
+.jl-modal-add {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: 32px;
+  position: relative;
+  border: none;
+  user-select: none;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  transition: background-color .3s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer !important;
+
+  &[disabled] {
+    cursor: not-allowed !important;
+    background-color: $gray !important;
+    opacity: .65; 
+  }
+
+  &.disabled {
+    pointer-events: none;
+  }
+}
+
+[class*="jl-button"]:not(.jl-custom-close-btn) {
+  min-width: 88px;
+  padding: 0 16px;
+  border-radius: 4px;
+  outline: 0;
+  font-size: 14px;
+  outline: none;
+
+  i {
+    font-size: 24px;
+  }
+
+  span {
+    font-weight: normal;
+  }
+
+  i + span,
+  span + i {
+    margin-left: 6px;
+  }
+
+  img + span,
+  span + img {
+    margin-left: 12px;
+  }
+
+  &.jl-custom-btn {
+    min-width: 80px;
+  }
+}
+
+.jl-modal-add {
+  height: 32px;
+  width: 32px;
+  outline: 0;
+  background-color: $green;
+  color: $white !important;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+
+  i {
+    font-size: 24px;
+  }
+
+  &:hover {
+    background-color: $darken-green;
+  }
+}
+
+[class*="jl-icon"] {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  color: $darken-gray;
+
+  &[disabled] {
+    i {
+      cursor: not-allowed !important;
+      color: $gray !important;
+      opacity: .65;
+    }
+  }
+
+  i {
+    color: inherit;
+  }
+}
+
+// Styling the button ***
+// *** Add backgroundcolor and hover state
+$colors: (
+  red: $red,
+  green: $green,
+  blue: $blue,
+  orange: $orange,
+  lightenorange: $lighten-orange,  
+  yellow: $yellow,
+  skyblue: $skyblue,
+  white: $white,
+  gray: $lighten-gray,
+  lightgray: $light-gray,
+  "lighten-gray": $lighten-gray,
+);
+$hover-colors: $darken-red, $darken-green, $darken-blue, $darken-orange, $orange, $darken-yellow, $darken-skyblue, $white, $lighten-gray, $light-gray, $lightgray;
+@each $color, $color-code in $colors {
+  $i: index(($colors), ($color $color-code));
+  .jl-button-#{"" + $color} {
+    background-color: $color-code;
+
+    @if ($color == yellow) {
+      color: $black;
+    } @else if ($color == white) {
+      border: 1px solid rgba(31, 32, 65, 0.25);
+      color: #545454 !important;
+    }
+    @else if ($color == gray) {
+      color: $color !important;
+    }
+    @else if ($color == "lighten-gray") {
+      color: $black;
+    }
+    @else {
+      color: $white;
+    }
+
+    i {
+      @if ($color == yellow) {
+        color: $black;
+      }
+      @else if ($color == gray) {
+        color: $color !important;
+      }
+      @else if ($color == "lighten-gray") {
+        color: $black;
+      }
+      @else {
+        color: $white;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      background-color: nth($hover-colors, $i);
+
+      @if ($color == yellow) {
+        color: $black;
+      }
+      @else if ($color == "lighten-gray") {
+        color: $black;
+      } @else {
+        color: $white;
+      }
+    }
+  }
+
+  .jl-icon-#{"" + $color} {
+    i {
+      color: $color-code;
+    }
+
+    &:hover i,
+    &:focus i {
+      color: nth($hover-colors, $i);
+    }
+  }
+}
+// Add backgroundcolor and hover state ***
+
+// *** Special 
+@media screen and (max-width: $md) {
+  .responsive {
+    &[class*="jl-button"] {
+      background-color: transparent;
+      padding: 0;
+      min-width: auto !important;
+      span {
+        display: none;
+      }
+    }
+  
+    @each $color, $color-code in $colors {
+      $i: index(($colors), ($color $color-code));
+      &.jl-button-#{"" + $color} {
+        i {
+          color: $color-code;
+        }
+    
+        &:hover {
+          color: nth($hover-colors, $i);
+        }
+      }
+    }
+  }
+}
+// Special ***
+
+.jl-btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  button {
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    padding-left: 12px;
+    padding-right: 12px;
+    background: white;
+    min-width: 80px;
+    border-radius: 0px;
+    &.active {
+      background-color: $skyblue;
+      color: white;
+      border: 1px solid rgba(31, 32, 65, 0.25);
+    }
+
+    &:first-child {
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+    
+    &:last-child {
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
+  }
+}
+
+.jl-tabs{
+    background-color: $tag-bg-color;
+    color: white;
+    border-color: $tag-border-color;
+    border-radius: 5px;
+    padding: 5px 5px;
+    margin: 2px;
+    float: left;
+    margin-bottom: 0px;
+    .bg-gray {
+      background-color: $gray;
+      color: $color;
+    }
+}
+
+
+
+.btn-group-justified > .btn, .btn-group-justified > .btn-group {
+  display: table-cell;
+  float: none;
+  width: 1%;
+  background: linear-gradient(0deg, #FAFAFA, #FAFAFA), linear-gradient(0deg, #FFFFFF, #FFFFFF), #00A6B5;
+  border-radius: 0px 3px 3px 0px;
+  height: 36px;
+  &.active{
+    background: $lighten-skyblue;
+    border-radius: 0px 3px 3px 0px;
+    /* transform: matrix(-1, 0, 0, 1, 0, 0); */
+    color: white;
+    box-shadow: none;
+  }
+
+}
+
+.jl-button-ghost {
+  border: 1px solid $gray;
+  border-radius: 6px;
+  color: $color;
+  &:hover {
+    color: $color;
+  }
+}
+
+.jl-button-link {
+  border: 0;
+  color: $advance-skyblue;
+  background-color: transparent;
+  padding: 0 !important;
+  min-width: auto !important;
+  column-gap: 6px;
+  transition: color 0.3s;
+
+  strong {
+    font-weight: 600;
+  }
+
+  @for $i from 8 through 32 {
+    .fz#{$i} {
+      font-size: $i + px;
+    }
+  }
+
+  &:hover {
+    color: $blue-3;
+  }
+}
+
+.btn-default-darkgray{
+  background-color: $darken-gray;
+}
+
+.jl-btn-delete {
+  background-color: $red !important;
+  color: $white !important;
+
+  i {
+    color: $white !important;
+  }
+
+  &:hover {
+    background-color: $darken-red !important;
+    color: $white;
+  }
+}

@@ -1,0 +1,194 @@
+@mixin respond($media) {
+  @if $media==mb {
+    @media only screen and (max-width: $mb - 1px) { @content; }
+  }
+  @else if $media==gt-mb {
+    @media only screen and (min-width: $mb) { @content; }
+  }
+  @else if $media==xs {
+    @media only screen and (min-width: $mb) and (max-width: $xs - 1px) { @content; }
+  }
+  @else if $media==gt-xs {
+    @media only screen and (min-width: $xs) { @content; }
+  }
+  @else if $media==sm {
+    @media only screen and (min-width: $xs) and (max-width: $sm - 1px) { @content; }
+  }
+  @else if $media==gt-sm {
+    @media only screen and (min-width: $sm) { @content; }
+  }
+  @else if $media==md {
+    @media only screen and (min-width: $sm) and (max-width: $md - 1px) { @content; }
+  }
+  @else if $media==gt-md {
+    @media only screen and (min-width: $md) { @content; }
+  }
+  @else if $media==lg {
+    @media only screen and (min-width: $lg) { @content; }
+  }
+  @else if $media==gt-lg {
+    @media only screen and (min-width: $lg) { @content; }
+  }
+  @else if $media==modal-xs {
+    @media only screen and (max-width: $xs - 1) { @content; }
+  }
+  @else if $media==lt-sm {
+    @media only screen and (max-width: $sm - 1) { @content; }
+  }
+  @else if $media==modal-sm {
+    @media only screen and (min-width: $xs) { @content; }
+  }
+  @else if $media==modal-md {
+    @media only screen and (min-width: $sm) { @content; }
+  }
+  @else if $media==lt-md {
+    @media only screen and (max-width: $md) { @content; }
+  }
+  @else if $media==lt-lg {
+    @media only screen and (max-width: $lg) { @content; }
+  }
+  @else if $media==modal-lg {
+    @media only screen and (min-width: $md) { @content; }
+  }
+  @else if $media==lt-xs {
+    @media only screen and (max-width: $xs - 1) { @content; }
+  }
+}
+
+@mixin backdrop($color, $opacity) {
+  position: relative;
+  z-index: 1;
+
+  &::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: $color;
+    opacity: $opacity;
+    z-index: -1;
+  }
+}
+
+@mixin bg-size($size) {
+  background-size: $size;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin collapse-arrow{
+  transform: rotate(180deg);
+  -webkit-transform: rotate(-180deg);
+}
+
+@mixin word-wrap{
+  word-wrap: break-word;
+  white-space: -moz-pre-wrap !important;
+  white-space: -webkit-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+}
+
+@mixin size($w, $h: $w){
+  width: $w;
+  height: $h;
+}
+
+@mixin jl-select-selected-option(){
+    color: $skyblue;
+    background-color: $info-bg;
+    font-weight: 600;
+}
+
+@mixin gap($row, $column: null) {
+	@if $column == null {
+		gap: $row;
+	} @else {
+		gap: $row $column;
+	}
+}
+
+@mixin generate-gap-classes($maxValue: 48) {
+	@for $row from 0 through $maxValue {
+		.gap-#{$row * 2} {
+			@include gap($row * 2px);
+		}
+
+		@for $column from 0 through $maxValue {
+			.gap-#{$row * 2}-#{$column * 2} {
+				@include gap($row * 2px, $column * 2px);
+			}
+		}
+	}
+}
+
+@mixin line-clamp-x {
+  @for $i from 1 through 10 {
+    .line-clamp-#{$i} {
+      -webkit-line-clamp: $i;
+    }
+  }
+}
+
+
+@function generate-spacing-value($unit, $important: false) {
+	@return $unit + px + if($important, '!important', '');
+}
+
+@function generate-full-name-type($type) {
+	@return if($type == m, margin, padding);
+}
+
+@function generate-full-name-placement($placement) {
+	@return if($placement == t, -top, if($placement == r, -right, if($placement == b, -bottom, if($placement == l, -left, ''))));
+}
+
+@mixin apply-spacing($type-name, $placement-name, $unit, $important: false) {
+	#{$type-name}#{$placement-name}: generate-spacing-value($unit, $important);
+}
+
+@mixin apply-axis-spacing($type-name, $placement, $unit, $important: false) {
+	@if $placement == h {
+		@include apply-spacing($type-name, -right, $unit, $important);
+		@include apply-spacing($type-name, -left, $unit, $important);
+	} @else if $placement == v {
+		@include apply-spacing($type-name, -top, $unit, $important);
+		@include apply-spacing($type-name, -bottom, $unit, $important);
+	}
+}
+
+@mixin generate-classes($type, $placement, $unit) {
+	$type-name: generate-full-name-type($type);
+	$placement-name: generate-full-name-placement($placement);
+
+	@if ($placement != h and $placement != v) {
+		.#{$type}#{if($placement == all, '', $placement)}#{$unit} {
+			@include apply-spacing($type-name, $placement-name, $unit);
+		}
+
+		.#{$type}#{if($placement == all, '', $placement)}#{$unit}-imp {
+			@include apply-spacing($type-name, $placement-name, $unit, true);
+		}
+	} @else {
+		.#{$type}#{$placement}#{$unit} {
+			@include apply-axis-spacing($type-name, $placement, $unit);
+		}
+
+		.#{$type}#{$placement}#{$unit}-imp {
+			@include apply-axis-spacing($type-name, $placement, $unit, true);
+		}
+	}
+}

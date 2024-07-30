@@ -1,0 +1,131 @@
+@import './../helpers';
+
+#jlAdvanceSearch {
+  display: none;
+}
+
+.jlAdvanceSearchTrigger {
+  font-weight: 600;
+  i + span,
+  span + i {
+    margin-left: 6px;
+  }
+}
+
+.jlAdvanceSearchTrigger {
+  .jli {
+    font-size: 24px;
+  }
+}
+
+.jl-search-box {
+  background-color: $white;
+  padding: 12px 12px 12px 12px;
+  border-radius: 12px;
+  margin-top: 7px;
+}
+
+.jl-search-box+.jl-search-box {
+  margin-top: 15px;
+}
+
+@media screen and (min-width:767px) {
+  #jlAdvanceSearch.xs {
+    display: block !important;
+  }
+}
+#JobSearch_Form{
+  .search-form .jl-search-box{
+    padding-right: 30px;
+  }
+}
+
+#JobSearchFilter {
+	.jl-table {
+		tr {
+			&:first-child {
+				.on-hover--top {
+					&:hover .new-tooltip {
+						z-index: 1100;
+					}
+	
+					.new-tooltip {
+						bottom: auto;
+						top: 34px;
+		
+						&:after,
+						&::before {
+							bottom: auto;
+							top: -12px;
+							border-top-color: transparent;
+						}
+		
+						&:before {
+							border-bottom-color: $lighter-gray;
+						}
+		
+						&:after {
+							border-bottom-color: $white;
+						}
+					}
+				}
+				&:last-child {
+					.on-hover--top {
+						position: unset;
+						.new-tooltip {
+							top: auto;
+							bottom: 0;
+							transform: translateY(10%);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* When detail box within tabs, remove one lot of padding */
+
+.tab-content>.tab-pane>.jl-search-box {
+  padding: 0px;
+  box-shadow: none;
+}
+
+.jlAdvanceSearch-togglePannel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  @include respond(mb) {
+    > div {
+      width: 100%;
+      justify-content: space-around;
+
+      button {
+        margin-top: 6px;
+        margin-bottom: 6px;
+      }
+    }
+
+    > button {
+      width: 100%;
+      margin-top: 6px;
+    }
+  }
+}
+
+.jlAdvanceSearchTrigger  {
+  display: none;
+}
+
+#jlAdvanceSearch + .jlAdvanceSearch-togglePannel .jlAdvanceSearchTrigger  {
+  display: inline-flex;
+}
+
+.chip-secondary {
+	border-radius: 20px;
+	color: white;
+	background-color: #ff7919;
+	padding: 0 8px;
+}

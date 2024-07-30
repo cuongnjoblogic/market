@@ -1,0 +1,244 @@
+table>tbody>tr>td>span.footable-toggle {
+  float: left;
+}
+
+.jl-table-old {
+  border-collapse: initial !important;
+  margin-top: 12px;
+}
+
+.jl-table-old input[type="checkbox"] {
+  margin: 2px 5px 0;
+  float: left;
+}
+
+.jl-table-old thead tr th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.jl-table-old thead tr th:last-child {
+  border-top-right-radius: 12px;
+}
+
+.jl-table-old thead tr th {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666666;
+  background-color: #efefef;
+  vertical-align: middle;
+  padding-left: 12px;
+  padding-right: 12px;
+  height: 38px;
+  border: 0;
+}
+
+.jl-table-old thead tr th label {
+  font-weight: 400;
+  margin-bottom: 0px;
+}
+
+.jl-table-old thead tr th.jl-select-all-th {
+  min-width: 60px;
+}
+
+.jl-table-old tbody,
+.jl-table-old tbody+tbody {
+  border-top: #f5f5f5 5px solid;
+  color: #8e8e8e;
+}
+
+.jl-table-old tbody>tr.jl-main-tr>td {
+  font-weight: 600;
+}
+
+.jl-table-old tbody>tr>td {
+  vertical-align: middle;
+  padding: 9px 12px;
+  height: 42px;
+  border: 0;
+}
+
+.jl-table-old:not(.footable-details)>tbody>tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.jl-table-old:not(.footable-details)>tbody>tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+.footable .jl-table-old.no-tr-bg tbody>tr:nth-child(even)>td,
+.costs-table tbody>tr.collapse>td,
+.costs-table tbody>tr.collapsing>td {
+  background-color: #FFF;
+}
+
+.jl-table-old.costs-table tbody>tr:not(.collapse)>td {
+  background-color: #f8f8f8;
+}
+
+.jl-table-old.costs-table tbody>tr>td {
+  border-color: #e5e5e5;
+}
+
+.jl-table-old tbody tr td label {
+  font-weight: normal;
+}
+
+.jl-table-old tbody tr td {
+    .jli {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.jl-table-old.jl-table-old-no-thead tbody tr th {
+  display: none;
+}
+
+.jl-table-old .jl-table-old {
+  background-color: transparent;
+}
+
+.jl-table-old .jl-table-old tbody,
+.jl-table-old .jl-table-old tbody+tbody {
+  border: 0px;
+}
+
+.jl-table-old .jl-table-old tbody>tr>td,
+.jl-table-old .jl-table-old tbody>tr:nth-child(even)>td {
+  border: 0px;
+  background-color: transparent;
+  padding: 5px;
+  height: auto;
+  vertical-align: top;
+}
+
+.jl-table-old .jl-table-old tbody>tr>th {
+  font-weight: 600;
+  border: 0px;
+  padding: 5px;
+}
+
+.jl-table-old-data-bs {
+  margin-bottom: 12px;
+}
+
+.jl-table-old-data-bs .jl-table-old-data-bs-thead {
+  background-color: #424242;
+  font-size: 0.75em;
+  font-weight: 400;
+  color: #FFF;
+}
+
+.jl-table-old-data-bs .row {
+  margin: 6px 0;
+}
+
+.jl-table-old-data-bs .row [class^="col-"] {
+  padding: 8px;
+}
+
+.jl-table-old-data-bs-tbody .row {
+  background-color: #FFF;
+  box-shadow: 2px 2px 3px -3px rgba(0, 0, 0, .5);
+  line-height: 22px;
+}
+
+/*.jl-table-old-data-bs-tbody .row:nth-child(even) { background-color:#f8f8f8;}*/
+
+.jl-css-responsive-table>tbody>tr>td {
+  /*height:auto;*/
+}
+
+tr.collapse.in+.footable-detail-row .collapse {
+  display: block;
+}
+
+@media screen and (max-width: 992px) {
+  .jl-table-old-data-bs-tbody>.row>div {
+    float: left;
+    width: 33.3%;
+    padding: 3px 12px !important;
+  }
+  .jl-table-old-data-bs-tbody>.row>div span {
+    font-weight: 600;
+    display: block !important;
+  }
+  .jl-css-responsive-table,
+  .jl-css-responsive-table thead,
+  .jl-css-responsive-table tbody,
+  .jl-css-responsive-table th,
+  .jl-css-responsive-table td,
+  .jl-css-responsive-table tr {
+    display: block;
+  }
+  .jl-css-responsive-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  .jl-css-responsive-table tbody {
+    border-top: 0px;
+  }
+  .jl-css-responsive-table tr {
+    float: left;
+    width: 100%;
+    box-shadow: 0 0 10px #CCC;
+    padding: 10px;
+    background-color: #FFF;
+    margin: 12px 0;
+  }
+  .jl-css-responsive-table tr:nth-child(even) {
+    background-color: #f8f8f8;
+  }
+  .jl-css-responsive-table tr+tr {
+    border-top: 0;
+  }
+  .jl-css-responsive-table td {
+    border: 0px !important;
+    position: relative;
+    float: left;
+    width: 33.3%;
+    padding: 8px !important;
+    height: auto !important;
+  }
+  .jl-css-responsive-table td:before {
+    float: left;
+    width: 100%;
+    font-weight: 600;
+  }
+  .jl-css-responsive-table td:before {
+    content: attr(data-label);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .jl-table-old thead tr th.jl-select-all-th input[type="checkbox"] {
+    margin-left: 25px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .jl-table-old-data-bs-tbody>.row>div {
+    width: 50%;
+  }
+  .jl-css-responsive-table td {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .jl-table-old-data-bs-tbody>.row>div {
+    width: 100%;
+  }
+}
+
+.responsive-table {
+  overflow-x: auto;
+}
+
+.jl-table-row-icon {
+  .jli {
+    font-size: 16px;
+  }
+}
